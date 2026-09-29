@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ShieldCheck, Lock, Check } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/site-data";
 import { toast } from "sonner";
@@ -275,7 +275,9 @@ export default function CheckoutPage() {
               {items.map((item) => (
                 <li key={item.slug} className="flex gap-3">
                   <div className="w-16 shrink-0">
-                    <ProductImage
+                    <RealImage
+                      src={`/images/${item.slug}/1.jpg`}
+                      alt={item.name}
                       shape={item.imageShape}
                       color={item.imageColor}
                       accent={item.imageAccent}

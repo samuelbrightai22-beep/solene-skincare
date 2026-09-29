@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { type Product, formatPrice } from "@/lib/site-data";
-import { ProductImage } from "./product-image";
+import { RealImage } from "./real-image";
 import { AddToCartButton } from "./add-to-cart-button";
 import { cn } from "@/lib/utils";
 
@@ -32,11 +32,14 @@ export function ProductCard({
         href={`/products/${product.slug}`}
         className="block relative aspect-square"
       >
-        <ProductImage
+        <RealImage
+          src={product.image}
+          alt={product.name}
           shape={product.imageShape}
           color={product.imageColor}
           accent={product.imageAccent}
           className="rounded-none"
+          priority={priority}
         />
         {product.badge && (
           <span

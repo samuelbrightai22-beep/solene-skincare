@@ -19,7 +19,10 @@ export type Product = {
   benefits: string[];
   skinType: string[];
   fullIngredients: string;
-  // Image: gradient + emoji-free SVG-friendly product representation
+  // Real photorealistic image (generated)
+  image: string;
+  imageGallery: string[];
+  // Fallback palette + shape if image fails to load
   imageColor: string; // hex
   imageAccent: string; // hex
   imageShape: "bottle" | "jar" | "tube" | "dropper";
@@ -31,6 +34,7 @@ export type Collection = {
   tagline: string;
   description: string;
   longDescription: string;
+  image: string;
   imageColor: string;
   imageAccent: string;
 };
@@ -43,6 +47,7 @@ export type BlogPost = {
   author: string;
   date: string;
   readTime: string;
+  image: string;
   imageColor: string;
   imageAccent: string;
   content: { heading?: string; paragraphs: string[] }[];
@@ -68,6 +73,7 @@ export const collections: Collection[] = [
       "Creamy, oil-based and gel cleansers that melt away the day without stripping your barrier.",
     longDescription:
       "Every Solène ritual begins here. Our cleansers are pH-balanced to your skin's natural acid mantle, formulated with cold-pressed botanical oils and gentle surfactants derived from coconut. They dissolve sunscreen, makeup and the city's particulate matter without leaving your skin tight, dry or reactive. We never use harsh sulfates — every formula is built for daily use, morning and night.",
+    image: "/images/collection-cleansers/1.jpg",
     imageColor: "#C9824F",
     imageAccent: "#FAF6EE",
   },
@@ -79,6 +85,7 @@ export const collections: Collection[] = [
       "Concentrated formulas with clinically-studied actives — vitamin C, bakuchiol, niacinamide, hyaluronic acid.",
     longDescription:
       "Serums are where the work gets done. Each Solène serum is built around a single hero active at a clinically effective concentration, supported by botanical extracts that calm, hydrate and feed the skin's microbiome. We avoid fillers, fragrance allergens and known irritants — every drop is doing something. Apply to clean, slightly damp skin and follow with a moisturizer to seal it in.",
+    image: "/images/collection-serums/1.jpg",
     imageColor: "#4A5D3A",
     imageAccent: "#FAF6EE",
   },
@@ -90,6 +97,7 @@ export const collections: Collection[] = [
       "Lightweight gels for daytime, rich recovery balms for night — every barrier finds its match.",
     longDescription:
       "Moisturizers do more than hydrate. They seal in the serums beneath them, fortify the lipid barrier, and protect skin from trans-epidermal water loss. Our daytime formulas are lightweight and layer cleanly under SPF; our nighttime formulas use shea, squalane and botanical waxes to rebuild the barrier while you sleep. Choose by skin type and by season — most people need two.",
+    image: "/images/collection-moisturizers/1.jpg",
     imageColor: "#8C9A7B",
     imageAccent: "#FAF6EE",
   },
@@ -101,6 +109,7 @@ export const collections: Collection[] = [
       "Pink clay, papaya enzymes, honey overnight — the reset your skin craves once or twice a week.",
     longDescription:
       "Masks and exfoliants are the weekly reset — a deeper intervention than your daily ritual. Our clay masks draw out impurities without overdrying, our enzyme peels gently dissolve dead skin cells without the redness of physical scrubs, and our overnight honey mask restores what the week took out. Use them once or twice a week, never on the same day, and always follow with moisturizer.",
+    image: "/images/collection-masks/1.jpg",
     imageColor: "#B85C3C",
     imageAccent: "#FAF6EE",
   },
@@ -112,6 +121,7 @@ export const collections: Collection[] = [
       "Body oils, hand creams and salt polishes with the same botanical standard as your face.",
     longDescription:
       "We believe the skin below your chin deserves the same care as the skin above it. Our body care uses the same cold-pressed botanical oils and the same no-fragrance-allergen standard as our face products. Body oils absorb quickly without residue, hand creams are rich but never sticky, and our sea salt polish leaves skin soft and glowing. Because the ritual doesn't stop at the jawline.",
+    image: "/images/collection-body-care/1.jpg",
     imageColor: "#A38B5C",
     imageAccent: "#FAF6EE",
   },
@@ -123,6 +133,7 @@ export const collections: Collection[] = [
       "Pre-built routines and gift sets — for yourself, or someone you love.",
     longDescription:
       "Curated routines take the guesswork out of skincare. Each set is built around a specific skin goal — radiant glow, calm recovery, or travel-ready discovery — with products formulated to layer cleanly. They're also our most-gifted items, packaged in recycled paper and tied with linen ribbon. Choose a set, follow the morning-and-night order on the inside flap, and let the ritual begin.",
+    image: "/images/collection-sets/1.jpg",
     imageColor: "#C9824F",
     imageAccent: "#2A2520",
   },
@@ -137,6 +148,8 @@ export const products: Product[] = [
     slug: "rosewater-cream-cleanser",
     name: "Rosewater Cream Cleanser",
     subtitle: "Cream cleanser for dry & sensitive skin",
+    image: "/images/rosewater-cream-cleanser/1.jpg",
+    imageGallery: ["/images/rosewater-cream-cleanser/1.jpg"],
     category: "cleansers",
     price: 38,
     compareAtPrice: 46,
@@ -184,6 +197,8 @@ export const products: Product[] = [
     slug: "charcoal-detox-wash",
     name: "Charcoal Detox Wash",
     subtitle: "Gel cleanser for combination & oily skin",
+    image: "/images/charcoal-detox-wash/1.jpg",
+    imageGallery: ["/images/charcoal-detox-wash/1.jpg"],
     category: "cleansers",
     price: 34,
     size: "150 ml",
@@ -230,6 +245,8 @@ export const products: Product[] = [
     slug: "oat-milk-gentle-cleanser",
     name: "Oat Milk Gentle Cleanser",
     subtitle: "Non-foaming milk cleanser for reactive skin",
+    image: "/images/oat-milk-gentle-cleanser/1.jpg",
+    imageGallery: ["/images/oat-milk-gentle-cleanser/1.jpg"],
     category: "cleansers",
     price: 36,
     size: "150 ml",
@@ -278,6 +295,8 @@ export const products: Product[] = [
     slug: "vitamin-c-brightening-serum",
     name: "Vitamin C Brightening Serum",
     subtitle: "15% L-ascorbic acid with ferulic acid",
+    image: "/images/vitamin-c-brightening-serum/1.jpg",
+    imageGallery: ["/images/vitamin-c-brightening-serum/1.jpg"],
     category: "serums",
     price: 68,
     compareAtPrice: 82,
@@ -325,6 +344,8 @@ export const products: Product[] = [
     slug: "hyaluronic-hydra-serum",
     name: "Hyaluronic Hydra Serum",
     subtitle: "Multi-weight hyaluronic acid + glycerin",
+    image: "/images/hyaluronic-hydra-serum/1.jpg",
+    imageGallery: ["/images/hyaluronic-hydra-serum/1.jpg"],
     category: "serums",
     price: 52,
     size: "30 ml",
@@ -370,6 +391,8 @@ export const products: Product[] = [
     slug: "bakuchiol-renewal-serum",
     name: "Bakuchiol Renewal Serum",
     subtitle: "Plant retinol alternative with squalane",
+    image: "/images/bakuchiol-renewal-serum/1.jpg",
+    imageGallery: ["/images/bakuchiol-renewal-serum/1.jpg"],
     category: "serums",
     price: 76,
     size: "30 ml",
@@ -416,6 +439,8 @@ export const products: Product[] = [
     slug: "niacinamide-pore-refiner",
     name: "Niacinamide Pore Refiner",
     subtitle: "10% niacinamide + zinc PCA",
+    image: "/images/niacinamide-pore-refiner/1.jpg",
+    imageGallery: ["/images/niacinamide-pore-refiner/1.jpg"],
     category: "serums",
     price: 44,
     size: "30 ml",
@@ -463,6 +488,8 @@ export const products: Product[] = [
     slug: "daily-glow-face-cream",
     name: "Daily Glow Face Cream",
     subtitle: "Lightweight gel-cream for all skin types",
+    image: "/images/daily-glow-face-cream/1.jpg",
+    imageGallery: ["/images/daily-glow-face-cream/1.jpg"],
     category: "moisturizers",
     price: 58,
     size: "50 ml",
@@ -509,6 +536,8 @@ export const products: Product[] = [
     slug: "overnight-recovery-balm",
     name: "Overnight Recovery Balm",
     subtitle: "Rich night cream with shea and peptides",
+    image: "/images/overnight-recovery-balm/1.jpg",
+    imageGallery: ["/images/overnight-recovery-balm/1.jpg"],
     category: "moisturizers",
     price: 72,
     size: "50 ml",
@@ -554,6 +583,8 @@ export const products: Product[] = [
     slug: "oil-free-gel-moisturizer",
     name: "Oil-Free Gel Moisturizer",
     subtitle: "Lightweight gel for oily & acne-prone skin",
+    image: "/images/oil-free-gel-moisturizer/1.jpg",
+    imageGallery: ["/images/oil-free-gel-moisturizer/1.jpg"],
     category: "moisturizers",
     price: 48,
     size: "50 ml",
@@ -601,6 +632,8 @@ export const products: Product[] = [
     slug: "pink-clay-detox-mask",
     name: "Pink Clay Detox Mask",
     subtitle: "Weekly clarifying mask for all skin types",
+    image: "/images/pink-clay-detox-mask/1.jpg",
+    imageGallery: ["/images/pink-clay-detox-mask/1.jpg"],
     category: "masks",
     price: 42,
     size: "75 ml",
@@ -647,6 +680,8 @@ export const products: Product[] = [
     slug: "enzyme-papaya-peel",
     name: "Enzyme Papaya Peel",
     subtitle: "Gentle enzymatic exfoliant",
+    image: "/images/enzyme-papaya-peel/1.jpg",
+    imageGallery: ["/images/enzyme-papaya-peel/1.jpg"],
     category: "masks",
     price: 46,
     size: "50 ml",
@@ -692,6 +727,8 @@ export const products: Product[] = [
     slug: "honey-overnight-mask",
     name: "Honey Overnight Mask",
     subtitle: "Sleeping mask with raw honey and propolis",
+    image: "/images/honey-overnight-mask/1.jpg",
+    imageGallery: ["/images/honey-overnight-mask/1.jpg"],
     category: "masks",
     price: 54,
     size: "50 ml",
@@ -740,6 +777,8 @@ export const products: Product[] = [
     slug: "body-oil-citrus-bloom",
     name: "Body Oil — Citrus Bloom",
     subtitle: "Lightweight body oil with sweet almond and citrus",
+    image: "/images/body-oil-citrus-bloom/1.jpg",
+    imageGallery: ["/images/body-oil-citrus-bloom/1.jpg"],
     category: "body-care",
     price: 48,
     size: "150 ml",
@@ -785,6 +824,8 @@ export const products: Product[] = [
     slug: "hand-cream-lavender-shea",
     name: "Hand Cream — Lavender & Shea",
     subtitle: "Rich hand cream for dry, overwashed hands",
+    image: "/images/hand-cream-lavender-shea/1.jpg",
+    imageGallery: ["/images/hand-cream-lavender-shea/1.jpg"],
     category: "body-care",
     price: 28,
     size: "75 ml",
@@ -830,6 +871,8 @@ export const products: Product[] = [
     slug: "body-polish-sea-salt",
     name: "Body Polish — Sea Salt & Rosemary",
     subtitle: "Exfoliating salt scrub with botanical oils",
+    image: "/images/body-polish-sea-salt/1.jpg",
+    imageGallery: ["/images/body-polish-sea-salt/1.jpg"],
     category: "body-care",
     price: 42,
     size: "250 ml",
@@ -877,6 +920,8 @@ export const products: Product[] = [
     slug: "glow-routine-set",
     name: "The Glow Routine Set",
     subtitle: "Three-piece morning ritual",
+    image: "/images/glow-routine-set/1.jpg",
+    imageGallery: ["/images/glow-routine-set/1.jpg"],
     category: "sets",
     price: 142,
     compareAtPrice: 158,
@@ -921,6 +966,8 @@ export const products: Product[] = [
     slug: "travel-discovery-kit",
     name: "Travel Discovery Kit",
     subtitle: "Five mini-size rituals for travel",
+    image: "/images/travel-discovery-kit/1.jpg",
+    imageGallery: ["/images/travel-discovery-kit/1.jpg"],
     category: "sets",
     price: 48,
     size: "5 × 15ml",
@@ -971,6 +1018,8 @@ export const products: Product[] = [
     slug: "mothers-day-gift-set",
     name: "Mother's Day Gift Set",
     subtitle: "Limited-edition three-piece with hand-poured candle",
+    image: "/images/mothers-day-gift-set/1.jpg",
+    imageGallery: ["/images/mothers-day-gift-set/1.jpg"],
     category: "sets",
     price: 98,
     compareAtPrice: 124,
@@ -1085,6 +1134,7 @@ export const blogPosts: BlogPost[] = [
     author: "Camille Renard",
     date: "2025-08-12",
     readTime: "6 min",
+    image: "/images/blog-slow-skincare/1.jpg",
     imageColor: "#4A5D3A",
     imageAccent: "#FAF6EE",
     content: [
@@ -1119,6 +1169,7 @@ export const blogPosts: BlogPost[] = [
     author: "Solène Lab Team",
     date: "2025-07-28",
     readTime: "8 min",
+    image: "/images/blog-bakuchiol/1.jpg",
     imageColor: "#A38B5C",
     imageAccent: "#FAF6EE",
     content: [
@@ -1154,6 +1205,7 @@ export const blogPosts: BlogPost[] = [
     author: "Solène Lab Team",
     date: "2025-07-10",
     readTime: "5 min",
+    image: "/images/blog-3-step-routine/1.jpg",
     imageColor: "#C9824F",
     imageAccent: "#FAF6EE",
     content: [
@@ -1195,6 +1247,7 @@ export const blogPosts: BlogPost[] = [
     author: "Camille Renard",
     date: "2025-06-22",
     readTime: "7 min",
+    image: "/images/blog-lavender-farm/1.jpg",
     imageColor: "#8C9A7B",
     imageAccent: "#FAF6EE",
     content: [
@@ -1229,6 +1282,7 @@ export const blogPosts: BlogPost[] = [
     author: "Solène Lab Team",
     date: "2025-05-30",
     readTime: "6 min",
+    image: "/images/blog-fragrance/1.jpg",
     imageColor: "#B85C3C",
     imageAccent: "#FAF6EE",
     content: [

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Leaf, Heart, Beaker, Globe2 } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { brandInfo } from "@/lib/site-data";
 
 export const metadata = {
@@ -36,11 +36,14 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div className="relative">
             <div className="aspect-[4/5] max-w-md mx-auto">
-              <ProductImage
+              <RealImage
+                src="/images/about-founder/1.jpg"
+                alt="Camille Renard, founder of Solène"
                 shape="dropper"
                 color="#4A5D3A"
                 accent="#FAF6EE"
                 className="h-full"
+                priority
               />
             </div>
             <div className="absolute -bottom-6 -right-2 md:right-6 bg-card px-6 py-4 shadow-lg border border-border/40">

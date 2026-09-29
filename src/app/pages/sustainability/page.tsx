@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Recycle, Leaf, Truck, Globe2, Droplet, Package } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 
 export const metadata = {
   title: "Sustainability — Solène",
@@ -153,16 +153,40 @@ export default function SustainabilityPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="aspect-square">
-              <ProductImage shape="bottle" color="#4A5D3A" accent="#FAF6EE" />
+              <RealImage
+                src="/images/oil-free-gel-moisturizer/1.jpg"
+                alt="Oil-Free Gel Moisturizer"
+                shape="bottle"
+                color="#4A5D3A"
+                accent="#FAF6EE"
+              />
             </div>
             <div className="aspect-square mt-8">
-              <ProductImage shape="dropper" color="#C9824F" accent="#FAF6EE" />
+              <RealImage
+                src="/images/vitamin-c-brightening-serum/1.jpg"
+                alt="Vitamin C Brightening Serum"
+                shape="dropper"
+                color="#C9824F"
+                accent="#FAF6EE"
+              />
             </div>
             <div className="aspect-square -mt-4">
-              <ProductImage shape="jar" color="#8C9A7B" accent="#FAF6EE" />
+              <RealImage
+                src="/images/pink-clay-detox-mask/1.jpg"
+                alt="Pink Clay Detox Mask"
+                shape="jar"
+                color="#8C9A7B"
+                accent="#FAF6EE"
+              />
             </div>
             <div className="aspect-square">
-              <ProductImage shape="tube" color="#A38B5C" accent="#FAF6EE" />
+              <RealImage
+                src="/images/hand-cream-lavender-shea/1.jpg"
+                alt="Hand Cream Lavender & Shea"
+                shape="tube"
+                color="#A38B5C"
+                accent="#FAF6EE"
+              />
             </div>
           </div>
         </div>

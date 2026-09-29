@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { blogPosts } from "@/lib/site-data";
 
 export const metadata = {
@@ -36,11 +36,14 @@ export default function JournalPage() {
           className="group grid gap-8 lg:grid-cols-2 items-center"
         >
           <div className="aspect-[4/3] overflow-hidden rounded-md">
-            <ProductImage
+            <RealImage
+              src={featured.image}
+              alt={featured.title}
               shape="bottle"
               color={featured.imageColor}
               accent={featured.imageAccent}
               className="h-full"
+              priority
             />
           </div>
           <div>
@@ -76,7 +79,9 @@ export default function JournalPage() {
               className="group block"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-                <ProductImage
+                <RealImage
+                  src={post.image}
+                  alt={post.title}
                   shape="bottle"
                   color={post.imageColor}
                   accent={post.imageAccent}

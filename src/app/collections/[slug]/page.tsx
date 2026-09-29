@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/site/site-shell";
 import { ProductCard } from "@/components/site/product-card";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import {
   collections,
   products,
@@ -62,11 +62,14 @@ export default async function CollectionPage({
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid gap-8 lg:grid-cols-2 items-center">
           <div className="aspect-[4/3]">
-            <ProductImage
+            <RealImage
+              src={collection.image}
+              alt={collection.name}
               shape="bottle"
               color={collection.imageColor}
               accent={collection.imageAccent}
               className="h-full"
+              priority
             />
           </div>
           <div>
@@ -140,7 +143,9 @@ export default async function CollectionPage({
                   className="group flex flex-col bg-card border border-border/60 hover:border-accent rounded-md p-4 transition-colors"
                 >
                   <div className="aspect-square mb-3">
-                    <ProductImage
+                    <RealImage
+                      src={c.image}
+                      alt={c.name}
                       shape="jar"
                       color={c.imageColor}
                       accent={c.imageAccent}

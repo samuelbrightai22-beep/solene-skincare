@@ -4,7 +4,7 @@ import Link from "next/link";
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/site-data";
-import { ProductImage } from "./product-image";
+import { RealImage } from "./real-image";
 
 export function CartDrawer({
   open,
@@ -67,7 +67,9 @@ export function CartDrawer({
                       onClick={onClose}
                       className="block w-20 shrink-0"
                     >
-                      <ProductImage
+                      <RealImage
+                        src={`/images/${item.slug}/1.jpg`}
+                        alt={item.name}
                         shape={item.imageShape}
                         color={item.imageColor}
                         accent={item.imageAccent}

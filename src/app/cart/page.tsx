@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Minus, Plus, X, ShoppingBag, ArrowRight } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { useCart } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/site-data";
 
@@ -51,7 +51,9 @@ export default function CartPage() {
                       href={`/products/${item.slug}`}
                       className="w-24 sm:w-28 shrink-0"
                     >
-                      <ProductImage
+                      <RealImage
+                        src={`/images/${item.slug}/1.jpg`}
+                        alt={item.name}
                         shape={item.imageShape}
                         color={item.imageColor}
                         accent={item.imageAccent}

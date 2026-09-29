@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { Newsletter } from "@/components/site/newsletter";
 import { blogPosts, getBlogPost } from "@/lib/site-data";
 
@@ -83,11 +83,14 @@ export default async function BlogPostPage({
 
         {/* Hero image */}
         <div className="mt-8 aspect-[16/9] overflow-hidden rounded-md">
-          <ProductImage
+          <RealImage
+            src={post.image}
+            alt={post.title}
             shape="bottle"
             color={post.imageColor}
             accent={post.imageAccent}
             className="h-full"
+            priority
           />
         </div>
 
@@ -143,7 +146,9 @@ export default async function BlogPostPage({
                 className="group grid grid-cols-[120px_1fr] gap-4 items-center"
               >
                 <div className="aspect-square">
-                  <ProductImage
+                  <RealImage
+                    src={p.image}
+                    alt={p.title}
                     shape="bottle"
                     color={p.imageColor}
                     accent={p.imageAccent}

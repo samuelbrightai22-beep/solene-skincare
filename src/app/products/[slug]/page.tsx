@@ -10,7 +10,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { ProductCard } from "@/components/site/product-card";
 import { ProductActions } from "@/components/site/product-actions";
 import {
@@ -82,35 +82,28 @@ export default async function ProductPage({
           {/* Image gallery */}
           <div className="flex flex-col gap-4">
             <div className="aspect-square">
-              <ProductImage
+              <RealImage
+                src={product.image}
+                alt={product.name}
                 shape={product.imageShape}
                 color={product.imageColor}
                 accent={product.imageAccent}
                 className="h-full"
+                priority
               />
             </div>
             <div className="grid grid-cols-4 gap-3">
-              <div className="aspect-square opacity-80">
-                <ProductImage
-                  shape={product.imageShape}
-                  color={product.imageColor}
-                  accent={product.imageAccent}
-                />
-              </div>
-              <div className="aspect-square">
-                <ProductImage
-                  shape="dropper"
-                  color={product.imageColor}
-                  accent={product.imageAccent}
-                />
-              </div>
-              <div className="aspect-square">
-                <ProductImage
-                  shape="jar"
-                  color={product.imageColor}
-                  accent={product.imageAccent}
-                />
-              </div>
+              {product.imageGallery.slice(0, 3).map((img, idx) => (
+                <div key={idx} className="aspect-square">
+                  <RealImage
+                    src={img}
+                    alt={`${product.name} view ${idx + 1}`}
+                    shape={product.imageShape}
+                    color={product.imageColor}
+                    accent={product.imageAccent}
+                  />
+                </div>
+              ))}
               <div className="aspect-square flex items-center justify-center bg-secondary/40 border border-border/40 rounded-md">
                 <span className="text-xs text-foreground/50 text-center px-2">
                   + More

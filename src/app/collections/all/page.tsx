@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site/site-shell";
 import { ProductCard } from "@/components/site/product-card";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import { products, collections } from "@/lib/site-data";
 
 export const metadata = {
@@ -61,7 +61,9 @@ export default function CollectionsAllPage() {
               className="group flex items-center gap-4 bg-card border border-border/60 hover:border-accent rounded-md p-4 transition-colors"
             >
               <div className="w-20 h-20 shrink-0">
-                <ProductImage
+                <RealImage
+                  src={c.image}
+                  alt={c.name}
                   shape="bottle"
                   color={c.imageColor}
                   accent={c.imageAccent}

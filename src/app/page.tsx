@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
 import { ProductCard } from "@/components/site/product-card";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 import {
   products,
   collections,
@@ -81,27 +81,36 @@ export default function HomePage() {
             <div className="relative aspect-square w-full max-w-lg mx-auto">
               <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-4">
                 <div className="row-span-2">
-                  <ProductImage
+                  <RealImage
+                    src="/images/vitamin-c-brightening-serum/1.jpg"
+                    alt="Vitamin C Brightening Serum"
                     shape="dropper"
                     color="#C9824F"
                     accent="#FAF6EE"
                     className="h-full"
+                    priority
                   />
                 </div>
                 <div>
-                  <ProductImage
+                  <RealImage
+                    src="/images/rosewater-cream-cleanser/1.jpg"
+                    alt="Rosewater Cream Cleanser"
                     shape="bottle"
                     color="#E8B4BC"
                     accent="#C9824F"
                     className="h-full"
+                    priority
                   />
                 </div>
                 <div>
-                  <ProductImage
+                  <RealImage
+                    src="/images/daily-glow-face-cream/1.jpg"
+                    alt="Daily Glow Face Cream"
                     shape="jar"
                     color="#4A5D3A"
                     accent="#FAF6EE"
                     className="h-full"
+                    priority
                   />
                 </div>
               </div>
@@ -190,7 +199,9 @@ export default function HomePage() {
                   backgroundImage: `radial-gradient(circle at 50% 50%, ${collection.imageColor}22, transparent 60%)`,
                 }}
               >
-                <ProductImage
+                <RealImage
+                  src={collection.image}
+                  alt={collection.name}
                   shape={idx % 2 === 0 ? "bottle" : "jar"}
                   color={collection.imageColor}
                   accent={collection.imageAccent}
@@ -247,11 +258,14 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div className="relative">
             <div className="aspect-[4/5] w-full max-w-md mx-auto">
-              <ProductImage
+              <RealImage
+                src="/images/about-founder/1.jpg"
+                alt="Camille Renard, founder of Solène"
                 shape="dropper"
                 color="#4A5D3A"
                 accent="#FAF6EE"
                 className="h-full"
+                priority
               />
             </div>
             <div className="absolute -bottom-6 -right-2 md:right-8 bg-card px-6 py-4 shadow-lg border border-border/40 max-w-[200px]">
@@ -412,7 +426,9 @@ export default function HomePage() {
               className="group block"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-                <ProductImage
+                <RealImage
+                  src={post.image}
+                  alt={post.title}
                   shape="bottle"
                   color={post.imageColor}
                   accent={post.imageAccent}
@@ -470,15 +486,29 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-2">
-                <ProductImage
+                <RealImage
+                  src="/images/glow-routine-set/1.jpg"
+                  alt="The Glow Routine Set"
                   shape="bottle"
                   color="#FAF6EE"
                   accent="#4A5D3A"
                   className="aspect-[16/5]"
                 />
               </div>
-              <ProductImage shape="dropper" color="#C9824F" accent="#FAF6EE" />
-              <ProductImage shape="jar" color="#FAF6EE" accent="#C9824F" />
+              <RealImage
+                src="/images/vitamin-c-brightening-serum/1.jpg"
+                alt="Vitamin C Brightening Serum"
+                shape="dropper"
+                color="#C9824F"
+                accent="#FAF6EE"
+              />
+              <RealImage
+                src="/images/daily-glow-face-cream/1.jpg"
+                alt="Daily Glow Face Cream"
+                shape="jar"
+                color="#FAF6EE"
+                accent="#C9824F"
+              />
             </div>
           </div>
         </div>
@@ -504,7 +534,9 @@ export default function HomePage() {
               href={`/products/${p.slug}`}
               className="group relative aspect-square overflow-hidden rounded-md"
             >
-              <ProductImage
+              <RealImage
+                src={p.image}
+                alt={p.name}
                 shape={p.imageShape}
                 color={p.imageColor}
                 accent={p.imageAccent}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Leaf, Beaker, Ban, CheckCircle2 } from "lucide-react";
 import { SiteShell } from "@/components/site/site-shell";
-import { ProductImage } from "@/components/site/product-image";
+import { RealImage } from "@/components/site/real-image";
 
 export const metadata = {
   title: "Ingredients Philosophy — Solène",
@@ -233,15 +233,29 @@ export default function IngredientsPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-2 aspect-[16/9]">
-                <ProductImage
+                <RealImage
+                  src="/images/about-atelier/1.jpg"
+                  alt="Solène atelier"
                   shape="bottle"
                   color="#4A5D3A"
                   accent="#FAF6EE"
                   className="h-full"
                 />
               </div>
-              <ProductImage shape="jar" color="#C9824F" accent="#FAF6EE" />
-              <ProductImage shape="dropper" color="#A38B5C" accent="#FAF6EE" />
+              <RealImage
+                src="/images/daily-glow-face-cream/1.jpg"
+                alt="Daily Glow Face Cream"
+                shape="jar"
+                color="#C9824F"
+                accent="#FAF6EE"
+              />
+              <RealImage
+                src="/images/bakuchiol-renewal-serum/1.jpg"
+                alt="Bakuchiol Renewal Serum"
+                shape="dropper"
+                color="#A38B5C"
+                accent="#FAF6EE"
+              />
             </div>
           </div>
         </div>
